@@ -1,4 +1,33 @@
 apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: argocd-gateway
+  namespace: argocd
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - hosts:
+    - argocd.xip.se
+    port:
+      name: http
+      number: 80
+      protocol: HTTP
+    tls:
+      httpsRedirect: true
+  - hosts:
+    - argocd.xip.se # Change this to your domain
+    port:
+      name: https
+      number: 443
+      protocol: HTTPS
+    tls:
+      credentialName: ingress-cert
+      mode: SIMPLE
+
+---
+
+apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
   name: argocd
