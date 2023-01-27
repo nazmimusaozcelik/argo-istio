@@ -13,17 +13,7 @@ spec:
       name: http
       number: 80
       protocol: HTTP
-    tls:
-      httpsRedirect: true
-  - hosts:
-    - argocd.xip.se # Change this to your domain
-    port:
-      name: https
-      number: 443
-      protocol: HTTPS
-    tls:
-      credentialName: ingress-cert
-      mode: SIMPLE
+    
 
 ---
 
