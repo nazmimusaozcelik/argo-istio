@@ -33,3 +33,52 @@ spec:
         host: argocd-server.argocd.svc.cluster.local
         port:
           number: 80
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: argocd-gateway
+  namespace: default
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "safir-suite-argocd.com"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: keyclaok-vs
+  namespace: default
+spec:
+  hosts:
+  - "safir-suite-argocd.com"
+  gateways:
+  - argocd-gateway
+  http:
+  - route:
+    - destination:
+        host: argocd-server.default.svc.cluster.local
+        port:
+          number: 80
