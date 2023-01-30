@@ -1,4 +1,4 @@
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: argocd-gateway
@@ -8,16 +8,14 @@ spec:
     istio: ingressgateway
   servers:
   - hosts:
-    - argocd.xip.se
+    - safir-suite-argocd.com
     port:
       name: http
       number: 80
       protocol: HTTP
-    
-
 ---
 
-apiVersion: networking.istio.io/v1beta1
+apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: argocd
@@ -26,7 +24,7 @@ spec:
   gateways:
   - argocd-gateway
   hosts:
-  - argocd.xip.io # Change this to your domain
+  - safir-suite-argocd.com
   http:
   - route:
     - destination:
