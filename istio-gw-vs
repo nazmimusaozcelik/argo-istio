@@ -20,7 +20,7 @@ spec:
       name: https
       protocol: HTTPS
     tls:
-      mode: PASSTHROUGH
+      mode: DISABLE
     hosts:
     - "safir-argocd.b3lab.org"
 ---
@@ -44,3 +44,19 @@ spec:
         host: argocd-server.argocd.svc.cluster.local
         port:
           number: 443
+          
+          
+          
+          
+       
+
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
